@@ -17,7 +17,7 @@ class GerarInsertsTipoVeiculo
         $descricao = $this->tipos[$index % count($this->tipos)];
         $valor = number_format($this->valores[$descricao], 2, '.', '');
 
-        return "('$id', '$descricao', '$valor')";
+        return "($id, '$descricao', $valor)";
     }
 
     public function getCampos(): string

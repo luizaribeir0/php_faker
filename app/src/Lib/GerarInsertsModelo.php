@@ -41,7 +41,7 @@ class GerarInsertsModelo
 
         $this->usados[$marca][] = $descricao;
 
-        return "('$id', '$descricao', '$fabricanteId')";
+        return "($id, '$descricao', $fabricanteId)";
     }
 
     public function getCampos(): string

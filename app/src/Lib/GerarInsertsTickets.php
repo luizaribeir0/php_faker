@@ -12,7 +12,7 @@ class GerarInsertsTickets
         $veiculoId = rand(1, 65);
         $pracaId = rand(1, 12);
 
-        return "('$id', '$valor', '$dataHora', '$veiculoId', '$pracaId')";
+        return "($id, $valor, '$dataHora', $veiculoId, $pracaId)";
     }
 
     public function getCampos(): string

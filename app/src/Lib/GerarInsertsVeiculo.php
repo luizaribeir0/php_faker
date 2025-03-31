@@ -9,9 +9,9 @@ class GerarInsertsVeiculo
         $id = $index + 1;
         $placa = $this->gerarPlaca();
         $modeloId = rand(1, 48);
-        $tipoVeiculo = rand(1, 3);
+        $tipoVeiculoId = rand(1, 3);
 
-        return "('$id', '$placa', '$modeloId', '$tipoVeiculo')";
+        return "($id, '$placa', $modeloId, $tipoVeiculoId)";
     }
 
     private function gerarPlaca(): string

@@ -10,7 +10,7 @@ class GerarInsertsPraca
         $numero = rand(1, 50);
         $cidadeId = rand(1, 20);
 
-        return "('$id', '$numero', '$cidadeId')";
+        return "($id, $numero, $cidadeId)";
     }
 
     public function getCampos(): string

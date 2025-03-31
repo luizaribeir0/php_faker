@@ -14,7 +14,7 @@ class GerarInsertsFabricante
         $id = 1 + $index;
         $descricao = $this->marcas[$index];
 
-        return "('$id', '$descricao')";
+        return "($id, '$descricao')";
     }
 
     public function getCampos(): string
