@@ -26,15 +26,15 @@ class GerarFakeInsertsCommand extends Command
         $file = fopen($arquivo, 'w');
         fwrite($file, "INSERT INTO " . $nomeTabelaCorreto . " (" . $gerarInserts->getCampos() . ") VALUES\n");
 
-        if (strtolower($tabela) == 'fabricante') {
+        if ($nomeTabelaCorreto == 'fabricante') {
             $qtd = 16;
         }
 
-        if (strtolower($tabela) == 'tipo_veiculo') {
+        if ($nomeTabelaCorreto == 'tipo_veiculo') {
             $qtd = 3;
         }
 
-        if (strtolower($tabela) == 'modelo') {
+        if ($nomeTabelaCorreto == 'modelo') {
             $qtd = 48;
         }
 
