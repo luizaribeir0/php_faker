@@ -12,7 +12,7 @@ class GerarInsertsFabricante
     public function gerarLinha(int $index): string
     {
         $id = 1 + $index;
-        $descricao = $this->marcas[$index % count($this->marcas)];
+        $descricao = $this->marcas[$index];
 
         return "('$id', '$descricao')";
     }
