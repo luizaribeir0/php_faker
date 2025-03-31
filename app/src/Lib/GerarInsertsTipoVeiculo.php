@@ -4,20 +4,14 @@ namespace App\Lib;
 
 class GerarInsertsTipoVeiculo
 {
-    public function gerar(int $qtd): array
+    private array $tipos = ['Carro', 'Caminhão', 'Moto'];
+
+    public function gerarLinha(int $index): string
     {
-        $valores = [];
-        $tipos = ['Carro', 'Caminhão', 'Moto'];
+        $id = 1 + $index;
+        $descricao = $this->tipos[$index % count($this->tipos)];
 
-        $i = 0;
-        foreach ($tipos as $tipo) {
-            $id = 1 + $i;
-            $descricao = $tipo;
-
-            $valores[] = "('$id', '$descricao')";
-        }
-
-        return $valores;
+        return "('$id', '$descricao')";
     }
 
     public function getCampos(): string

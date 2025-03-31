@@ -17,14 +17,19 @@ class GerarFakeInsertsCommand extends Command
         if (!class_exists($classe)) {
             return;
         }
+
         $gerarInserts = new $classe();
+        $arquivo = strtolower($tabela) . '_' . $qtd . '_fake_inserts.sql';
 
-        $sql = "INSERT INTO " . strtolower($tabela) . " (" . $gerarInserts->getCampos() . ") VALUES\n";
-        $sql .= implode(",\n", $gerarInserts->gerar($qtd)) . ";\n";
+        $file = fopen($arquivo, 'w');
+        fwrite($file, "INSERT INTO " . strtolower($tabela) . " (" . $gerarInserts->getCampos() . ") VALUES\n");
 
-        $arquivo = strtolower($tabela) . $qtd . 'fake_inserts_.sql';
+        for ($i = 0; $i < $qtd; $i++) {
+            $valor = $gerarInserts->gerarLinha($i);
+            fwrite($file, $valor . (($i < $qtd - 1) ? ",\n" : ";\n"));
+        }
 
-        file_put_contents($arquivo, $sql);
+        fclose($file);
         $io->success("Arquivo '$arquivo' gerado com sucesso!");
     }
 }

@@ -4,23 +4,17 @@ namespace App\Lib;
 
 class GerarInsertsFabricante
 {
-    public function gerar(int $qtd): array
+    private array $marcas = [
+        'Toyota', 'Honda', 'Ford', 'Chevrolet', 'Volkswagen', 'Fiat', 'Hyundai', 'Nissan',
+        'Scania', 'Volvo', 'Mercedes-Benz', 'MAN', 'Iveco', 'DAF', 'BYD', 'BMW',
+    ];
+
+    public function gerarLinha(int $index): string
     {
-        $valores = [];
-        $marcas = [
-            'Toyota', 'Honda', 'Ford', 'Chevrolet', 'Volkswagen', 'Fiat', 'Hyundai', 'Nissan',
-            'Scania', 'Volvo', 'Mercedes-Benz', 'MAN', 'Iveco', 'DAF', 'BYD', 'BMW',
-        ];
+        $id = 1 + $index;
+        $descricao = $this->marcas[$index % count($this->marcas)];
 
-        $i = 0;
-        foreach ($marcas as $marca) {
-            $id = 1 + $i;
-            $descricao = $marca;
-
-            $valores[] = "('$id', '$descricao')";
-        }
-
-        return $valores;
+        return "('$id', '$descricao')";
     }
 
     public function getCampos(): string

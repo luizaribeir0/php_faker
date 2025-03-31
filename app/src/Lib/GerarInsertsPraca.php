@@ -4,19 +4,13 @@ namespace App\Lib;
 
 class GerarInsertsPraca
 {
-    public function gerar(int $qtd): array
+    public function gerarLinha(int $index): string
     {
-        $valores = [];
+        $id = 1 + $index;
+        $numero = rand(1, 50);
+        $cidadeId = rand(1, 20);
 
-        for ($i = 0; $i < $qtd; $i++) {
-            $id = 1 + $i;
-            $numero = rand(1, 50);
-            $cidadeId = rand(1, 20);
-
-            $valores[] = "('$id', '$numero', '$cidadeId')";
-        }
-
-        return $valores;
+        return "('$id', '$numero', '$cidadeId')";
     }
 
     public function getCampos(): string
