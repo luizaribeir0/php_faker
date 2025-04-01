@@ -17,15 +17,9 @@ class GerarFakeInsertsCommand extends Command
         if (!class_exists($classe)) {
             return;
         }
-
         $gerarInserts = new $classe();
 
         $nomeTabelaCorreto = strtolower($tabela) != 'tipoveiculo' ? strtolower($tabela) : 'tipo_veiculo';
-        $arquivo = $nomeTabelaCorreto . '_' . $qtd . '_fake_inserts.txt';
-
-        $file = fopen($arquivo, 'w');
-        fwrite($file, "INSERT INTO " . $nomeTabelaCorreto . " (" . $gerarInserts->getCampos() . ") VALUES\n");
-
         if ($nomeTabelaCorreto == 'fabricante') {
             $qtd = 16;
         }
@@ -37,6 +31,10 @@ class GerarFakeInsertsCommand extends Command
         if ($nomeTabelaCorreto == 'modelo') {
             $qtd = 48;
         }
+
+        $arquivo = $nomeTabelaCorreto . '_' . $qtd . '_fake_inserts.txt';
+        $file = fopen($arquivo, 'w');
+        fwrite($file, "INSERT INTO " . $nomeTabelaCorreto . " (" . $gerarInserts->getCampos() . ") VALUES\n");
 
         for ($i = 0; $i < $qtd; $i++) {
             $valor = $gerarInserts->gerarLinha($i);

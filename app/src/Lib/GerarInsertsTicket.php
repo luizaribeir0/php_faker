@@ -2,7 +2,7 @@
 
 namespace App\Lib;
 
-class GerarInsertsTickets
+class GerarInsertsTicket
 {
     public function gerarLinha(int $index): string
     {
